@@ -1,0 +1,43 @@
+body {
+  padding: 50px;
+  background-color: cadetblue !important;
+  font-family: 'Inconsolata', monospace !important;
+}
+
+a {
+  color: #00B7FF;
+}
+
+#btnEnviar {
+  margin-top: 20px;
+}
+
+#listaMensajes {
+  margin-top: 20px;
+}
+
+.titulo {
+  text-align: center;
+  margin-bottom: 30px;
+  border-bottom: 1px solid black;
+}
+
+.chat {
+  border: 1px solid black;
+  height: 350px;
+  background-color: #fff5ee;
+  border-radius: 20px;
+  overflow-y: scroll;
+}
+
+.container {
+  border: 1px solid #ccc;
+  padding: 40px;
+  background-color: white;
+  border-radius: 50px;
+  box-shadow: 1px 7px 29px -3px rgba(0,0,0,0.75);
+}
+
+.botones {
+  margin-top: 20px;
+}

@@ -1,0 +1,48 @@
+extends layout
+
+block content
+  .container.col-2
+    .titulo
+      h1 The Chat
+      p#usuariosConectados
+    .chat
+      ul#listaMensajes
+    .botones
+      label(name="user") User
+      input#username(type="text" class="form-control")
+
+      label(name="message") Message
+      input#mensaje(type="text" class="form-control")
+
+      button#btnEnviar.btn.btn-primary.col-12 S E N D
+
+  script.
+    let socket = io();
+
+    let inputUsername = document.getElementById('username');
+    let inputMensaje = document.getElementById('mensaje');
+    let listaMensajes = document.getElementById('listaMensajes');
+    let usuariosConectados = document.getElementById('usuariosConectados');
+
+    let boton = document.getElementById('btnEnviar');
+    boton.addEventListener('click', () => {
+      // Emite un mensaje del cliente al servidor
+      socket.emit('chat_message', {
+        username: inputUsername.value,
+        message: inputMensaje.value
+      });
+      inputUsername.value = '';
+      inputMensaje.value = '';
+    });
+
+    // Me suscribo al evento chat message para recibir en el cliente
+    socket.on('chat_message', (data) => {
+      let li = document.createElement('li');
+      li.innerText = `${data.username}: ${data.message}`;
+      listaMensajes.appendChild(li);
+    });
+
+    // Me suscribo al evento chat users para recibir en el cliente
+    socket.on('chat_users', (data) => {
+      usuariosConectados.innerText = `Usuarios Conectados: ${data}`;
+    });
