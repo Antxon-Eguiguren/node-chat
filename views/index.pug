@@ -1,9 +1,10 @@
 extends layout
 
 block content
-  .container.col-2
+  .container.col-8
     .titulo
-      h1 The Chat
+      h1 Our Private Chat
+      h2 💚 
       p#usuariosConectados
     .chat
       ul#listaMensajes
@@ -31,7 +32,6 @@ block content
         username: inputUsername.value,
         message: inputMensaje.value
       });
-      inputUsername.value = '';
       inputMensaje.value = '';
     });
 
@@ -44,5 +44,5 @@ block content
 
     // Me suscribo al evento chat users para recibir en el cliente
     socket.on('chat_users', (data) => {
-      usuariosConectados.innerText = `Usuarios Conectados: ${data}`;
+      usuariosConectados.innerText = `Users Connected: ${data}`;
     });
